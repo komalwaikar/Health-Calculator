@@ -4,19 +4,23 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<link rel="stylesheet" href="bmi.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico" />
     <title>BMI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies&display=swap" rel="stylesheet">
   </head>
-  <body style="background-color: #12cad6;">
+  <body>
     <div class="container c">
-      <img src="../assets/img/bmi1.png"  width="100%" height="300px" alt="">
+      <!-- <img src="../assets/img/bmi1.png"  width="100%" height="300px" alt=""> -->
+      <h1 style="font-size: 105px;font-family: 'Rowdies', cursive;; text-align: center; color: #fa1616; padding-top: 40px;"><b>BMI CALCULATOR</b> </h1>
+
         <div class="row">
             <div class="col-lg-3"></div>
             
-              <div class="col-lg-6 text-center">
+              <div class="col-lg-6 text-center" style="padding-top: 50px;">
+                <!-- <img src="../assets/img/bmi-chart2.jpg" id="image" height="400px" width="400px" alt=""><br> -->
                  <label for="height"><b>Height</b> </label>
                 <input type="number" id="feet" placeholder="Feet">
                 <input type="number" id="inche" placeholder="inches">
@@ -31,20 +35,41 @@
                 <div class="text-center">
                   <button class="btn btn-danger" style="border-radius: 15px;" onclick="bmi()" style="text-align: center;"><b>Calculate</b> </button>
                   <h2 id="result"></h2>
+                 <img src="../assets/img/bmi-chart2.jpg" id="chart" alt="">
+                 <!-- <img src="../assets/img/fruit.png" id="chart1" alt=""> -->
                   <br><br><br>
+              
                  
-                  <img src="../assets/img/bmi-chart2.jpg" height="400px" width="400px" alt=""><br>
                 </div>
             </div>
             
             
             <div class="col-lg-3"></div>
+            <h1 id="rate">What is Body Mass Index (BMI)?</h1>
+           <br> <h3 id="tips">• Body Mass Index (BMI) is a measurement of a person’s weight with respect to his or her height. It is more of an indicator than a direct measurement of a person’s total body fat.</h3>
+            <br><h3 id="tips1">• BMI, more often than not, correlates with total body fat. This means that as the BMI score increases, so does a person’s total body fat.</h3>
+            <br><h3 id="tips2">• BMI is a screening tool used to identify individuals who are underweight, overweight, or obese. BMI is NOT a diagnostic tool</h3>
+            <br><h3 id="tips3">• For example, a child who is relatively heavy may have a high BMI for his or her age. To determine whether the child has excess fat, further assessment is needed. To determine a counseling strategy, assessments of medical risks, behavioral risks, including sedentary time, dietary and physical activity behaviors, and attitudes are needed </h3>
         </div>
     </div>
 
+    
+
+
+
     <script>
+      function init(){
+        document.getElementById("chart"). style. display = "none";
+        // document.getElementById("chart1"). style. display = "none";
+
+      }
+      init()
+
       function bmi()
       {
+         document.getElementById("chart"). style. display = "block";
+        //  document.getElementById("chart1"). style. display = "block";
+
           var feet1=document.getElementById("feet").value;
           var inches1=document.getElementById("inche").value;
            var h=feet1+"."+inches1;
@@ -59,13 +84,45 @@
             document.getElementById("result").innerHTML="please fill all the details";
           }
           else if(result<18){
-            document.getElementById("result").innerHTML="BMI:- "+" "+result+"  "+"Your BMI is low"; 
+            
+            var tip="1. Milk :-Milk offers a mix of fat, carbohydrates, and proteins.It is also an excellent source of vitamins and minerals, including calcium.";
+            var tip1="2. Protein shakes :-  Protein shakes can help a person to gain weight easily and efficiently. A shake is most effective at helping to build muscle if drunk shortly after a workout.";
+            var tip2="3. Rice :- A cup of rice contains about 200 calories, and it is also a good source of carbohydrates, which contribute to weight gain. Many people find it easy to incorporate rice into meals containing proteins and vegetables."
+            var tip3="4. Nuts and nut butter :- Consuming nuts regularly can help a person to gain weight safely. Nuts are a great snack and can be added to many meals, including salads. Raw or dry roasted nuts have the most health benefits."
+
+            document.getElementById("result").innerHTML="BMI:- "+" "+result+"  "+"Your BMI is low You are Underweight"; 
+            document.getElementById("rate").innerHTML="Foods to gain weight quickly";
+            
+            document.getElementById("tips").innerHTML=tip;
+            document.getElementById("tips1").innerHTML=tip1; 
+            document.getElementById("tips2").innerHTML=tip2; 
+            document.getElementById("tips3").innerHTML=tip3; 
           }
           else if(result>=18 && result<25){
-            document.getElementById("result").innerHTML="BMI:- "+" "+result+"  "+"Your BMI is normal"; 
+            var tip="1. Exercise Often Regular :- exercise plays an important role in weight maintenance It may help you burn off some extra calories and increase your metabolism, which are two factors needed to achieve energy balance .";
+            var tip1="2. Eat Lots of Protein :- Eating a lot of protein may help you maintain your weight, since protein can help reduce appetite and promote fullness.";
+            var tip2="3. Weigh Yourself Regularly :- Monitoring your weight by stepping on the scale on a regular basis may be a helpful tool for weight maintenance. This is because it can make you aware of your progress and encourage weight control behaviors."
+            var tip3="4. Eat Lots of Protein Eating a lot of protein may help you maintain your weight, since protein can help reduce appetite and promote fullness."
+            document.getElementById("result").innerHTML="BMI:- "+" "+result+"  "+"Your BMI is minimal You are Normal"; 
+            // document.getElementById("chart1").setAttribute = (src,"../assets/img/food.jpg");
+
+            document.getElementById("rate").innerHTML="Tips to Maintain Weight";
+            document.getElementById("tips").innerHTML=tip;
+            document.getElementById("tips1").innerHTML=tip1; 
+            document.getElementById("tips2").innerHTML=tip2; 
+            document.getElementById("tips3").innerHTML=tip3;
           }
           else{
-            document.getElementById("result").innerHTML="BMI:- "+" "+result+"  "+"Your BMI is high";
+            var tip="1. Eat a high protein breakfast :- Eating a high protein breakfast could reduce cravings and calorie intake throughout the day .";
+            var tip1="2. Avoid sugary drinks and fruit juice :- These are among the most fattening things you can put into your body";
+            var tip2="3. Drink water before meals :- One study showed that drinking water a half hour before meals increased weight loss by 44% over 3 months."
+            var tip3="4. Get good quality sleep. Sleep is important formany reasons, and poor sleep is one of the biggest risk factors for weight gain."
+            document.getElementById("result").innerHTML="BMI:- "+" "+result+"  "+"Your BMI is high You are Overweight";
+            document.getElementById("rate").innerHTML="Foods to loss weight quickly";
+            document.getElementById("tips").innerHTML=tip;
+            document.getElementById("tips1").innerHTML=tip1; 
+            document.getElementById("tips2").innerHTML=tip2; 
+            document.getElementById("tips3").innerHTML=tip3; 
           }
       }
 
